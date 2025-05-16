@@ -30,8 +30,23 @@ public class SimulacionSRTF extends JFrame {
             {"P5", 15, 6}
         };
         JTable tabla = new JTable(new DefaultTableModel(datos, columnas));
+        
+        tabla.setAutoResizeMode(JTable.AUTO_RESIZE_OFF); // Evita que se expandan las columnas
+
+        // Establece el ancho de cada columna manualmente
+        tabla.getColumnModel().getColumn(0).setPreferredWidth(100);
+        tabla.getColumnModel().getColumn(1).setPreferredWidth(130);
+        tabla.getColumnModel().getColumn(2).setPreferredWidth(130);
+
+        
+        
         JScrollPane scrollTabla = new JScrollPane(tabla);
-        scrollTabla.setPreferredSize(new Dimension(250, 100));
+        scrollTabla.setPreferredSize(new Dimension(370, 120));
+
+        // Envolver en un panel con FlowLayout centrado
+        JPanel tablaPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        tablaPanel.add(scrollTabla);
+
         
 
         // Panel centro para el gráfico Gantt (vacío al inicio)
@@ -55,7 +70,7 @@ public class SimulacionSRTF extends JFrame {
 
         
         // Crear el JSplitPane
-        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, scrollTabla, ganttPanel);
+        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, tablaPanel, ganttPanel);
         splitPane.setResizeWeight(0.5); // Distribución inicial del espacio (0.5 significa 50/50)
 
         add(splitPane, BorderLayout.CENTER);
@@ -68,25 +83,58 @@ public class SimulacionSRTF extends JFrame {
         
         
         
-        
-        // Panel inferior (información + botón)
+        // Panel inferior general
         JPanel panelInferior = new JPanel();
         panelInferior.setLayout(new BoxLayout(panelInferior, BoxLayout.Y_AXIS));
-        panelInferior.add(new JLabel("Cálculo de los tiempos. El cambio de contexto se realiza en 0.2 milisegundos."));
-        panelInferior.add(new JLabel("a) Tiempo de espera de cada proceso: P1= ; P2= ; P3= ; P4= ; P5="));
-        panelInferior.add(new JLabel("b) Tiempo de espera promedio de todos los procesos (TEP):"));
-        panelInferior.add(new JLabel("c) Tiempo total de procesamiento de todos los procesos (TTP):"));
-        panelInferior.add(new JLabel("d) Porcentaje del TTP que consume el TEP:"));
 
+        // Panel centrado para los textos
+        JPanel textoPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.anchor = GridBagConstraints.WEST;
+        gbc.insets = new Insets(2, 0, 2, 0); // Espaciado vertical
+
+        // Línea 1: texto general
+        gbc.gridwidth = 2; // Ocupa dos columnas
+        textoPanel.add(new JLabel("Cálculo de los tiempos. El cambio de contexto se realiza en 0.2 milisegundos."), gbc);
+
+        // Las siguientes líneas son incisos
+        gbc.gridy = 1;
+        gbc.gridwidth = 1; // Volvemos a una sola columna
+
+        // a)
+        gbc.gridy++;
+        textoPanel.add(new JLabel("a) Tiempo de espera de cada proceso: P1= ; P2= ; P3= ; P4= ; P5="), gbc);
+
+        // b)
+        gbc.gridy++;
+        textoPanel.add(new JLabel("b) Tiempo de espera promedio de todos los procesos (TEP):"), gbc);
+
+        // c)
+        gbc.gridy++;
+        textoPanel.add(new JLabel("c) Tiempo total de procesamiento de todos los procesos (TTP):"), gbc);
+
+        // d)
+        gbc.gridy++;
+        textoPanel.add(new JLabel("d) Porcentaje del TTP que consume el TEP:"), gbc);
+
+        // Centramos todo el bloque de texto
+        textoPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panelInferior.add(textoPanel);
+
+        // Botón centrado debajo
         JButton pasoBtn = new JButton("Paso n");
         pasoBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         pasoBtn.addActionListener((ActionEvent e) -> {
             pasoActual++;
-            ganttPanel.repaint(); // Muestra la gráfica según el paso
+            ganttPanel.repaint();
         });
+        panelInferior.add(Box.createVerticalStrut(10)); // Separación opcional
         panelInferior.add(pasoBtn);
 
+        // Añadir el panel inferior al frame
         add(panelInferior, BorderLayout.SOUTH);
+
     }
 
     public static void main(String[] args) {
