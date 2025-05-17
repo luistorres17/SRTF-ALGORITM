@@ -6,12 +6,17 @@ import java.awt.event.ActionEvent;
 public class SimulacionSRTF extends JFrame {
 
     private JPanel ganttPanel;
-    private int pasoActual = 0;
+    private int pasoActual = -1;
+    private JLabel tiempoEsperaLbl;
+    private JLabel tepLbl;
+    private JLabel ttpLbl;
+    private JLabel porcentajeLbl;
+
 
     public SimulacionSRTF() {
         setTitle("Simulación de la Aplicación del Algoritmo SRTF");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+        setResizable(false);
         setLocationRelativeTo(null); 
         setLayout(new BorderLayout(10, 10));
 
@@ -54,18 +59,244 @@ public class SimulacionSRTF extends JFrame {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                if (pasoActual == 1) {
+                int x = 350; // posición inicial en X
+                int y = 30; // posición inicial en Y
+                int ancho = 25; // ancho de cada bloque
+                int alto = 40;  // alto del bloque
+
+                if (pasoActual >= 0) {
                     g.setColor(Color.BLUE);
-                    g.fillRect(50, 30, 100, 40);
+                    g.fillRect(x, y, ancho, alto);
                     g.setColor(Color.WHITE);
-                    g.drawString("P1", 95, 55);
+                    g.drawString("P1", x + 6, y + 25);
                     g.setColor(Color.BLACK);
-                    g.drawString("3", 155, 85);
+                    g.drawString("0", x + ancho -15 , y + alto + 15);
                 }
+                if (pasoActual >= 1) {
+                    x += ancho; // mover a la derecha
+                    g.setColor(Color.BLUE);
+                    g.fillRect(x, y, ancho, alto);
+                    g.setColor(Color.WHITE);
+                    g.drawString("P1", x + 6, y + 25);
+                    g.setColor(Color.BLACK);
+                    g.drawString("1", x + ancho -15 , y + alto + 15);
+                    
+                }
+                if (pasoActual >= 2) {
+                    x += ancho; // mover a la derecha
+                    g.setColor(Color.BLUE);
+                    g.fillRect(x, y, ancho, alto);
+                    g.setColor(Color.WHITE);
+                    g.drawString("P1", x + 6, y + 25);
+                    g.setColor(Color.BLACK);
+                    g.drawString("2", x + ancho -15 , y + alto + 15);
+                    
+                }
+                if (pasoActual >= 3) {
+                    x += ancho; // mover a la derecha
+                    g.setColor(Color.RED);
+                    g.fillRect(x, y, ancho, alto);
+                    g.setColor(Color.WHITE);
+                    g.drawString("P2", x + 6, y + 25);
+                    g.setColor(Color.BLACK);
+                    g.drawString("3", x + ancho -15 , y + alto + 15);
+                    
+                }
+                if (pasoActual >= 4) {
+                    x += ancho; // mover a la derecha
+                    g.setColor(Color.RED);
+                    g.fillRect(x, y, ancho, alto);
+                    g.setColor(Color.WHITE);
+                    g.drawString("P2", x + 6, y + 25);
+                    g.setColor(Color.BLACK);
+                    g.drawString("4", x + ancho -15 , y + alto + 15);
+                    
+                }
+                if (pasoActual >= 5) {
+                    x += ancho; // mover a la derecha
+                    g.setColor(Color.RED);
+                    g.fillRect(x, y, ancho, alto);
+                    g.setColor(Color.WHITE);
+                    g.drawString("P2", x + 6, y + 25);
+                    g.setColor(Color.BLACK);
+                    g.drawString("5", x + ancho -15 , y + alto + 15);
+                    
+                }
+                if (pasoActual >= 6) {
+                    x += ancho; // mover a la derecha
+                    g.setColor(Color.RED);
+                    g.fillRect(x, y, ancho, alto);
+                    g.setColor(Color.WHITE);
+                    g.drawString("P2", x + 6, y + 25);
+                    g.setColor(Color.BLACK);
+                    g.drawString("6", x + ancho -15 , y + alto + 15);
+                    
+                }
+                if (pasoActual >= 7) {
+                    x += ancho; // mover a la derecha
+                    g.setColor(Color.BLACK);
+                    g.fillRect(x, y, ancho, alto);
+                    g.setColor(Color.WHITE);
+                    g.drawString("P3", x + 6, y + 25);
+                    g.setColor(Color.BLACK);
+                    g.drawString("7", x + ancho -15 , y + alto + 15);
+                    
+                }
+                if (pasoActual >= 8) {
+                    x += ancho; // mover a la derecha
+                    g.setColor(Color.BLACK);
+                    g.fillRect(x, y, ancho, alto);
+                    g.setColor(Color.WHITE);
+                    g.drawString("P3", x + 6, y + 25);
+                    g.setColor(Color.BLACK);
+                    g.drawString("8", x + ancho -15 , y + alto + 15);
+                    
+                }
+                if (pasoActual >= 9) {
+                    x += ancho; // mover a la derecha
+                    g.setColor(Color.BLUE);
+                    g.fillRect(x, y, ancho, alto);
+                    g.setColor(Color.WHITE);
+                    g.drawString("P1", x + 6, y + 25);
+                    g.setColor(Color.BLACK);
+                    g.drawString("9", x + ancho -15 , y + alto + 15);
+                    
+                }
+                if (pasoActual >= 10) {
+                    x += ancho; // mover a la derecha
+                    g.setColor(Color.GREEN);
+                    g.fillRect(x, y, ancho, alto);
+                    g.setColor(Color.BLACK);
+                    g.drawString("P4", x + 6, y + 25);
+                    g.setColor(Color.BLACK);
+                    g.drawString("10", x + ancho -20 , y + alto + 15);
+                    
+                }
+                if (pasoActual >= 11) {
+                    x += ancho; // mover a la derecha
+                    g.setColor(Color.GREEN);
+                    g.fillRect(x, y, ancho, alto);
+                    g.setColor(Color.BLACK);
+                    g.drawString("P4", x + 6, y + 25);
+                    g.setColor(Color.BLACK);
+                    g.drawString("11", x + ancho -20 , y + alto + 15);
+                    
+                }
+                if (pasoActual >= 12) {
+                    x += ancho; // mover a la derecha
+                    g.setColor(Color.GREEN);
+                    g.fillRect(x, y, ancho, alto);
+                    g.setColor(Color.BLACK);
+                    g.drawString("P4", x + 6, y + 25);
+                    g.setColor(Color.BLACK);
+                    g.drawString("12", x + ancho -20 , y + alto + 15);
+                    
+                }
+                if (pasoActual >= 13) {
+                    x += ancho; // mover a la derecha
+                    g.setColor(Color.BLUE);
+                    g.fillRect(x, y, ancho, alto);
+                    g.setColor(Color.WHITE);
+                    g.drawString("P1", x + 6, y + 25);
+                    g.setColor(Color.BLACK);
+                    g.drawString("13", x + ancho -20 , y + alto + 15);
+                    
+                }
+                if (pasoActual >= 14) {
+                    x += ancho; // mover a la derecha
+                    g.setColor(Color.BLUE);
+                    g.fillRect(x, y, ancho, alto);
+                    g.setColor(Color.WHITE);
+                    g.drawString("P1", x + 6, y + 25);
+                    g.setColor(Color.BLACK);
+                    g.drawString("14", x + ancho -20 , y + alto + 15);
+                    
+                }
+                if (pasoActual >= 15) {
+                    x += ancho; // mover a la derecha
+                    g.setColor(Color.BLUE);
+                    g.fillRect(x, y, ancho, alto);
+                    g.setColor(Color.WHITE);
+                    g.drawString("P1", x + 6, y + 25);
+                    g.setColor(Color.BLACK);
+                    g.drawString("15", x + ancho -20 , y + alto + 15);
+                    
+                }
+                if (pasoActual >= 16) {
+                    x += ancho; // mover a la derecha
+                    g.setColor(Color.BLUE);
+                    g.fillRect(x, y, ancho, alto);
+                    g.setColor(Color.WHITE);
+                    g.drawString("P1", x + 6, y + 25);
+                    g.setColor(Color.BLACK);
+                    g.drawString("16", x + ancho -20 , y + alto + 15);
+                    
+                }
+                if (pasoActual >= 17) {
+                    x += ancho; // mover a la derecha
+                    g.setColor(Color.PINK);
+                    g.fillRect(x, y, ancho, alto);
+                    g.setColor(Color.BLACK);
+                    g.drawString("P5", x + 6, y + 25);
+                    g.setColor(Color.BLACK);
+                    g.drawString("17", x + ancho -20 , y + alto + 15);
+                    
+                }
+                if (pasoActual >= 18) {
+                    x += ancho; // mover a la derecha
+                    g.setColor(Color.PINK);
+                    g.fillRect(x, y, ancho, alto);
+                    g.setColor(Color.BLACK);
+                    g.drawString("P5", x + 6, y + 25);
+                    g.setColor(Color.BLACK);
+                    g.drawString("18", x + ancho -20 , y + alto + 15);
+                    
+                }
+                if (pasoActual >= 19) {
+                    x += ancho; // mover a la derecha
+                    g.setColor(Color.PINK);
+                    g.fillRect(x, y, ancho, alto);
+                    g.setColor(Color.BLACK);
+                    g.drawString("P5", x + 6, y + 25);
+                    g.setColor(Color.BLACK);
+                    g.drawString("19", x + ancho -20 , y + alto + 15);
+                    
+                }
+                if (pasoActual >= 20) {
+                    x += ancho; // mover a la derecha
+                    g.setColor(Color.PINK);
+                    g.fillRect(x, y, ancho, alto);
+                    g.setColor(Color.BLACK);
+                    g.drawString("P5", x + 6, y + 25);
+                    g.setColor(Color.BLACK);
+                    g.drawString("20", x + ancho -20 , y + alto + 15);
+                    
+                }
+                if (pasoActual >= 21) {
+                    x += ancho; // mover a la derecha
+                    g.setColor(Color.PINK);
+                    g.fillRect(x, y, ancho, alto);
+                    g.setColor(Color.BLACK);
+                    g.drawString("P5", x + 6, y + 25);
+                    g.setColor(Color.BLACK);
+                    g.drawString("21", x + ancho -20 , y + alto + 15);
+                    
+                }
+                if (pasoActual >= 22) {
+                    x += ancho; // mover a la derecha
+                    g.setColor(Color.PINK);
+                    g.fillRect(x, y, ancho, alto);
+                    g.setColor(Color.BLACK);
+                    g.drawString("P5", x + 6, y + 25);
+                    g.setColor(Color.BLACK);
+                    g.drawString("22", x + ancho -20 , y + alto + 15);
+                    
+                }
+                
             }
         };
         ganttPanel.setPreferredSize(new Dimension(400, 120));
-        ganttPanel.setBackground(Color.LIGHT_GRAY);
+        
         
 
         
@@ -74,7 +305,6 @@ public class SimulacionSRTF extends JFrame {
         splitPane.setResizeWeight(0.5); // Distribución inicial del espacio (0.5 significa 50/50)
 
         add(splitPane, BorderLayout.CENTER);
-
         setPreferredSize(new Dimension(1280, 720)); // Tamaño de la ventana
         pack();
         setLocationRelativeTo(null);
@@ -104,30 +334,54 @@ public class SimulacionSRTF extends JFrame {
 
         // a)
         gbc.gridy++;
-        textoPanel.add(new JLabel("a) Tiempo de espera de cada proceso: P1= ; P2= ; P3= ; P4= ; P5="), gbc);
+        tiempoEsperaLbl = new JLabel("a) Tiempo de espera de cada proceso: P1= ; P2= ; P3= ; P4= ; P5=");
+        textoPanel.add(tiempoEsperaLbl, gbc);
 
         // b)
         gbc.gridy++;
-        textoPanel.add(new JLabel("b) Tiempo de espera promedio de todos los procesos (TEP):"), gbc);
+        tepLbl = new JLabel("b) Tiempo de espera promedio de todos los procesos (TEP):");
+        textoPanel.add(tepLbl, gbc);
 
         // c)
         gbc.gridy++;
-        textoPanel.add(new JLabel("c) Tiempo total de procesamiento de todos los procesos (TTP):"), gbc);
+        ttpLbl = new JLabel("c) Tiempo total de procesamiento de todos los procesos (TTP):");
+        textoPanel.add(ttpLbl, gbc);
 
         // d)
         gbc.gridy++;
-        textoPanel.add(new JLabel("d) Porcentaje del TTP que consume el TEP:"), gbc);
+        porcentajeLbl = new JLabel("d) Porcentaje del TTP que consume el TEP:");
+        textoPanel.add(porcentajeLbl, gbc);
 
         // Centramos todo el bloque de texto
         textoPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
         panelInferior.add(textoPanel);
 
         // Botón centrado debajo
-        JButton pasoBtn = new JButton("Paso n");
+        JButton pasoBtn = new JButton("Preciona para iniciar");
         pasoBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         pasoBtn.addActionListener((ActionEvent e) -> {
             pasoActual++;
             ganttPanel.repaint();
+            if (pasoActual <= 21) {
+                pasoBtn.setText("Paso " + pasoActual);
+            } else if (pasoActual == 22) {
+                // Mostrar cálculos
+                tiempoEsperaLbl.setText("a) Tiempo de espera de cada proceso: P1=5 ; P2=1 ; P3=0 ; P4=0 ; P5=2");
+                tepLbl.setText("b) Tiempo de espera promedio de todos los procesos (TEP): 1.6");
+                ttpLbl.setText("c) Tiempo total de procesamiento de todos los procesos (TTP): 23");
+                porcentajeLbl.setText("d) Porcentaje del TTP que consume el TEP: 6.95%");
+
+                pasoBtn.setText("Reiniciar");
+            } else {
+                // Reiniciar
+                pasoActual = -1;
+                ganttPanel.repaint();
+                tiempoEsperaLbl.setText("a) Tiempo de espera de cada proceso: P1= ; P2= ; P3= ; P4= ; P5=");
+                tepLbl.setText("b) Tiempo de espera promedio de todos los procesos (TEP):");
+                ttpLbl.setText("c) Tiempo total de procesamiento de todos los procesos (TTP):");
+                porcentajeLbl.setText("d) Porcentaje del TTP que consume el TEP:");
+                pasoBtn.setText("Preciona para iniciar");
+            }
         });
         panelInferior.add(Box.createVerticalStrut(10)); // Separación opcional
         panelInferior.add(pasoBtn);
@@ -144,3 +398,4 @@ public class SimulacionSRTF extends JFrame {
 
 
 
+        
