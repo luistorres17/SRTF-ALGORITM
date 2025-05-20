@@ -173,10 +173,10 @@ public class SimulacionSRTF extends JFrame {
                 pasoBtn.setText("Paso " + pasoActual);
             } else if (pasoActual == 23) {
                 // Mostrar cálculos
-                tiempoEsperaLbl.setText("a) Tiempo de espera de cada proceso: P1=5 ; P2=1 ; P3=0 ; P4=0 ; P5=2");
-                tepLbl.setText("b) Tiempo de espera promedio de todos los procesos (TEP): 1.6");
+                tiempoEsperaLbl.setText("a) Tiempo de espera de cada proceso: P1=9 ; P2=0 ; P3=1 ; P4=0 ; P5=2");
+                tepLbl.setText("b) Tiempo de espera promedio de todos los procesos (TEP): 2.4");
                 ttpLbl.setText("c) Tiempo total de procesamiento de todos los procesos (TTP): 23");
-                porcentajeLbl.setText("d) Porcentaje del TTP que consume el TEP: 6.95%");
+                porcentajeLbl.setText("d) Porcentaje del TTP que consume el TEP: 10.43%");
 
                 pasoBtn.setText("Reiniciar");
             } else {
